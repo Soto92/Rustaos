@@ -13,7 +13,7 @@ This project serves both as a personal OS experiment and as an educational platf
 
 ## Install Rust and Cargo
 
-[Rust](https://www.rust-lang.org/learn/get-started)
+[Rust and Cargo installation here](https://www.rust-lang.org/learn/get-started)
 
 ### Add support to Cross-compilation (installation, choose one or install all):
 
@@ -109,7 +109,7 @@ cargo clean
 qemu-system-riscv64 -machine virt -nographic -bios none -kernel target/riscv64gc-unknown-none-elf/debug/rustaos
 ```
 
-## Record it to a USB flash drive (MacOS or Linux)
+## Save it to a USB flash drive (MacOS or Linux)
 
 ```
 sudo dd if=os-image.bin of=/dev/sdX bs=512 seek=0
@@ -118,6 +118,10 @@ sudo dd if=os-image.bin of=/dev/sdX bs=512 seek=0
 ### For windows you can use Rufus
 
 [Rufus](https://rufus.ie/en/)
+
+## Author
+
+Mauricio Soto
 
 ## References and links
 
