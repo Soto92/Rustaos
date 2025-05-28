@@ -1,0 +1,27 @@
+[package]
+name = "rustaos_portable"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+
+[build-dependencies]
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"
+
+[features]
+default = []
+
+[target.x86_64-unknown-none]
+runner = "qemu-system-x86_64 -drive format=raw,file=os-image-x86_64.bin"
+
+[target.riscv64gc-unknown-none-elf]
+runner = "qemu-system-riscv64 -machine virt -nographic -bios none -kernel"
+
+[target.aarch64-unknown-none]
+runner = "qemu-system-aarch64 -M raspi3 -serial null -serial stdio -kernel"
+
