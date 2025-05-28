@@ -1,4 +1,4 @@
-# Rustaos Portable
+![logo](./logo.png)
 
 Rustaos Portable is a lightweight, custom-built operating system written entirely in Rust, designed to run directly from a USB flash drive. Its primary focus is portability, security, and low-level control, offering a minimal yet expandable environment for learning, experimentation, or specialized tasks.
 
