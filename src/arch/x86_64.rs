@@ -1,11 +1,5 @@
-pub fn init() {
-    crate::arch::x86_64::serial_print("Rustaos booting on X86_64!\n");
-}
+const X86_64_SERIAL_PORT_BASE: usize = 0x3F8;
 
-pub fn serial_print(s: &str) {
-    unsafe {
-        for byte in s.bytes() {
-            core::ptr::write_volatile(0x3F8 as *mut u8, byte);
-        }
-    }
+pub fn init() {
+    crate::utils::serial_print(X86_64_SERIAL_PORT_BASE, "Rustaos booting on X86_64!\n");
 }

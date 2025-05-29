@@ -4,6 +4,7 @@
 use core::panic::PanicInfo;
 
 mod arch;
+mod utils;
 
 #[cfg(target_arch = "x86_64")]
 use arch::x86_64 as arch_impl;
@@ -17,7 +18,6 @@ use arch::aarch64 as arch_impl;
 #[no_mangle]
 pub extern "C" fn _start() -> ! {
     arch_impl::init();
-
     loop {}
 }
 
