@@ -48,13 +48,13 @@ cargo build --release --target x86_64-unknown-none
 Merge bootloader + kernel:
 
 ```bash
-cat bootloader/boot.bin target/x86_64-unknown-none/release/rustaos > os-image-x86_64.bin
+cat bootloader/boot.asm target/x86_64-unknown-none/release/rustaos_portable > os-image-x86_64.bin
 ```
 
 - Windows:
 
 ```
-Get-Content -Raw bootloader\boot.bin, target\x86_64-unknown-none\release\rustaos | Set-Content -Encoding Byte os-image-x86_64.bin
+Get-Content -Raw bootloader\boot.asm, target\x86_64-unknown-none\release\rustaos_portable | Set-Content -Encoding Byte os-image-x86_64.bin
 ```
 
 ---
@@ -70,7 +70,7 @@ cargo build --release --target riscv64gc-unknown-none-elf
 ### 🔗 Link (QEMU):
 
 ```bash
-qemu-system-riscv64 -machine virt -nographic -bios none -kernel target/riscv64gc-unknown-none-elf/release/rustaos
+qemu-system-riscv64 -machine virt -nographic -bios none -kernel target/riscv64gc-unknown-none-elf/release/rustaos_portable
 ```
 
 ## 🛠️ 3. **ARM 64-bit (aarch64 / Raspberry Pi 3/4)**
@@ -84,7 +84,7 @@ cargo build --release --target aarch64-unknown-none
 ### 🔗 Link:
 
 ```bash
-rust-objcopy target/aarch64-unknown-none/release/rustaos -O binary rustaos-aarch64.bin
+rust-objcopy target/aarch64-unknown-none/release/rustaos_portable -O binary rustaos-aarch64.bin
 ```
 
 Run:
@@ -103,16 +103,16 @@ Bootloader is required only for x86_64
 cargo clean
 ```
 
-### Testing with QEMU
+### Testing with QEMU (x86_64)
 
 ```
-qemu-system-riscv64 -machine virt -nographic -bios none -kernel target/riscv64gc-unknown-none-elf/debug/rustaos
+qemu-system-x86_64 -drive format=raw,file=os-image-x86_64.bin
 ```
 
-## Save it to a USB flash drive (MacOS or Linux)
+### Save it to a USB flash drive (MacOS or Linux)
 
 ```
-sudo dd if=os-image.bin of=/dev/sdX bs=512 seek=0
+sudo dd if=os-image-x86_64.bin of=/dev/sdX bs=512 seek=0
 ```
 
 ### For windows you can use Rufus
